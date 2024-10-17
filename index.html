@@ -17,26 +17,26 @@
         }
 
         /* 左边的图片 */
-.left-image {
-    position: fixed;
-    top: 0;
-    left: -90px; /* 调整为更靠左 */
-    height: 100vh; /* 图片高度为整个视口高度 */
-    object-fit: contain; /* 保持图片比例不变 */
-    transform: rotate(-90deg); /* 旋转图片 */
-    z-index: -1; /* 确保图片在文本下方 */
-}
+        .left-image {
+            position: fixed;
+            top: 0;
+            left: -90px; /* 调整为更靠左 */
+            height: 100vh; /* 图片高度为整个视口高度 */
+            object-fit: contain; /* 保持图片比例不变 */
+            transform: rotate(-90deg); /* 旋转图片 */
+            z-index: -1; /* 确保图片在文本下方 */
+        }
 
-/* 右边的图片 */
-.right-image {
-    position: fixed;
-    top: 0;
-    right: -90px; /* 调整为更靠右 */
-    height: 100vh; /* 图片高度为整个视口高度 */
-    object-fit: contain; /* 保持图片比例不变 */
-    transform: rotate(90deg); /* 旋转图片 */
-    z-index: -1; /* 确保图片在文本下方 */
-}
+        /* 右边的图片 */
+        .right-image {
+            position: fixed;
+            top: 0;
+            right: -90px; /* 调整为更靠右 */
+            height: 100vh; /* 图片高度为整个视口高度 */
+            object-fit: contain; /* 保持图片比例不变 */
+            transform: rotate(90deg); /* 旋转图片 */
+            z-index: -1; /* 确保图片在文本下方 */
+        }
 
         h1 {
             font-size: 18px;
@@ -64,6 +64,16 @@
             margin-top: 40px;
         }
 
+        /* 音乐盒按钮图片样式 */
+        .music-box {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 50px; /* 调整图片大小 */
+            height: 50px;
+            cursor: pointer;
+        }
+
         /* 隐藏音乐播放器的控件 */
         audio {
             display: none;
@@ -79,10 +89,13 @@
     <img src="line_whiteday_heart1.png" alt="右边的图片" class="right-image">
 
     <!-- 背景音乐（自动播放，循环播放） -->
-    <audio autoplay loop>
+    <audio id="bgm" autoplay loop>
         <source src="AML.mp3" type="audio/mpeg">
         お使いのブラウザはオーディオ要素をサポートしていません。
     </audio>
+
+    <!-- 音乐盒按钮 -->
+    <img src="omocha_orugooru.png" alt="播放音乐" class="music-box" onclick="toggleMusic()">
 
     <h1>阪本さんへ</h1>
 
@@ -123,6 +136,18 @@
     <footer>
         張王荷衣 2024年10月
     </footer>
+
+    <!-- JavaScript 控制播放/暂停音乐 -->
+    <script>
+        function toggleMusic() {
+            var audio = document.getElementById('bgm');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
 
 </body>
 </html>
