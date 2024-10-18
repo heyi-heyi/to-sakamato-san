@@ -13,29 +13,12 @@
             margin-left: auto;
             margin-right: auto;
             color: #333;
-            position: relative; /* 确保图片和文字正确显示 */
-        }
-
-        /* 左边的图片 */
-        .left-image {
-            position: fixed;
-            top: 0;
-            left: -90px; /* 调整为更靠左 */
-            height: 100vh; /* 图片高度为整个视口高度 */
-            object-fit: contain; /* 保持图片比例不变 */
-            transform: rotate(-90deg); /* 旋转图片 */
-            z-index: -1; /* 确保图片在文本下方 */
-        }
-
-        /* 右边的图片 */
-        .right-image {
-            position: fixed;
-            top: 0;
-            right: -90px; /* 调整为更靠右 */
-            height: 100vh; /* 图片高度为整个视口高度 */
-            object-fit: contain; /* 保持图片比例不变 */
-            transform: rotate(90deg); /* 旋转图片 */
-            z-index: -1; /* 确保图片在文本下方 */
+            position: relative;
+            background-image: url('season_10_tate.jpg');
+            background-size: contain; /* 确保图片适应屏幕 */
+            background-position: top left; /* 图片在左上角开始 */
+            background-repeat: no-repeat;
+            opacity: 0.6; /* 调整透明度 */
         }
 
         h1 {
@@ -74,28 +57,33 @@
             cursor: pointer;
         }
 
-        /* 隐藏音乐播放器的控件 */
+        /* 箭头提示图片样式 */
+        .arrow {
+            position: fixed;
+            top: 65px; /* 放在音乐盒图片的下面 */
+            right: 20px;
+            width: 30px; /* 调整箭头大小 */
+            height: 30px;
+            animation: bounce 1s infinite; /* 动态效果 */
+        }
+
+        /* 箭头上下弹跳的动画 */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 控制音乐播放器的样式 */
         audio {
-            display: none;
+            display: none; /* 默认隐藏自动播放的控件 */
         }
     </style>
 </head>
 <body>
-
-    <!-- 左边图片 -->
-    <img src="line_book.png" alt="左边的图片" class="left-image">
-
-    <!-- 右边图片 -->
-    <img src="line_whiteday_heart1.png" alt="右边的图片" class="right-image">
-
-    <!-- 背景音乐（自动播放，循环播放） -->
-    <audio id="bgm" autoplay loop>
-        <source src="AML.mp3" type="audio/mpeg">
-        お使いのブラウザはオーディオ要素をサポートしていません。
-    </audio>
-
-    <!-- 音乐盒按钮 -->
-    <img src="omocha_orugooru.png" alt="播放音乐" class="music-box" onclick="toggleMusic()">
 
     <h1>阪本さんへ</h1>
 
@@ -122,7 +110,7 @@
 
     <p>長い文面で自分のことばっかりでごめんなさい🙇🏻‍♀️ 一番伝えたいのは、1日目から最後の日まで、本当に感謝の気持ちでいっぱいだということです！もともと本が好きで本屋さんでアルバイトしたいと思っていたけど、この一年を通して心斎橋店の仕事が好きになったのは、ここで働いている皆さんや、特に阪本さんのおかげだと思います。</p>
 
-    <p>（夏にハンカチを使っているのを見て、先週この柄のハンカチを見かけて「カワイイ！阪本さんもかわいいって言ってくれそう」と思って買ってしまいましたw ぜひ使ってくださいw）</p>
+    <p>（夏にハンカチを使っているのを見て、先週この柄のハンカチを見かけて「カワイイ！阪本さんもかわいいって言ってくれそう」と思って買ってしまいましたw うちの店にもよくこの絵本ありますね ぜひ使ってくださいw）</p>
 
     <p>(BTSが好きだと聞いたので、このBGMにしました。合ってるかなぁ...）</p>
 
@@ -131,6 +119,18 @@
     <p>なんか...写真とかupするから インスタのほうがお互いまたこうやって生きてるなぁの感じをしますねw</p>
 
     <p>お世話になりました！ホントありがとうございます♪</p>
+
+    <!-- 音乐盒图标 -->
+    <img src="omocha_orugooru.png" alt="播放音乐" class="music-box" onclick="toggleMusic()">
+
+    <!-- 箭头提示图标 -->
+    <img src="1.png" alt="点击箭头" class="arrow">
+
+    <!-- 背景音乐（自动播放，循环播放） -->
+    <audio id="bgm" autoplay loop>
+        <source src="AML.mp3" type="audio/mpeg">
+        お使いのブラウザはオーディオ要素をサポートしていません。
+    </audio>
 
     <!-- 落款 -->
     <footer>
